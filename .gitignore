@@ -1,0 +1,8 @@
+# swap, backup and compiled files
+*.swp
+*.swo
+*.bak
+*.orig
+
+# lazy
+~/.local/share/nvim/lazy
