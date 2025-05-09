@@ -59,3 +59,4 @@ Files can now be edited using `nvim` inside WezTerm.
 - Possibly replace flat structure with returnable module.
 - Tmux.
 - Project templates.
+- Simple scroll animation.

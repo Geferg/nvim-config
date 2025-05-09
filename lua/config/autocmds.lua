@@ -68,3 +68,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "neo-tree",
+    callback = function()
+        vim.keymap.set("n", "<leader>", function()
+            require("which-key").show("<leader>")
+        end, { buffer = true, noremap = true, silent = true })
+    end,
+})
+

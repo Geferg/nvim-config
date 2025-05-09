@@ -18,5 +18,14 @@ return {
                 hide_gitignored = false,
             },
         },
+        window = {
+            mappings = {
+                ["<leader>"] = nil,
+            },
+        },
+        disable = {
+            buftypes = {},   -- allow "nofile"
+            filetypes = {},  -- allow "neo-tree"
+        },
     },
 }
