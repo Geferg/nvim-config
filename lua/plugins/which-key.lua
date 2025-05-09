@@ -23,6 +23,8 @@ return {
 
             },
 
+            ["-"] = { files.go_up_dir_in_place, "Go up directory" },
+
             ["<leader>d"] = { name = "Directory" },
             ["<leader>g"] = { name = "Git" },
             ["<leader>l"] = { name = "LSP" },

@@ -32,4 +32,16 @@ function M.toggle_neotree_focus()
   end
 end
 
+function M.go_up_dir_in_place()
+  local current_dir = vim.fn.expand("%:p:h") -- current dir
+  local parent = vim.fn.fnamemodify(current_dir, ":h")
+
+  require("neo-tree.command").execute({
+    dir = parent,
+    position = "current",
+    source = "filesystem",
+    action = "show",
+  })
+end
+
 return M
