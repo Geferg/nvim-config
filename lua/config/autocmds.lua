@@ -58,3 +58,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- Track last non-Neo-tree file vuffer for toggle navigation
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    local ft = vim.bo.filetype
+    if ft ~= "neo-tree" and ft ~= "" then
+      vim.g.last_file_bufnr = vim.api.nvim_get_current_buf()
+    end
+  end,
+})

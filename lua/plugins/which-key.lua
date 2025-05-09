@@ -1,21 +1,28 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {}, -- Required to suppress Lazy's warning if using `config`
+    opts = {},
     config = function()
         local wk = require("which-key")
         local project = require("features.project")
         local files = require("features.files")
 
         wk.register({
-            -- Group headings
             ["<leader>p"] = {
                 name = "Project",
-                v = { project.view_project_dir, "View project directory" },
+
                 s = { project.set_project_dir, "Set project directory" },
+                v = { project.view_project_dir, "View project (sidebar)", },
             },
 
-            ["<leader>f"] = { name = "Files" },
+            ["<leader>f"] = {
+                name = "Files",
+                t = { "<cmd>Neotree toggle<CR>", "Toggle sidebar tree" },
+                f = { files.toggle_neotree_focus, "Focus sidebar tree" },
+                e = { files.explore_parent, "Explore parent dir" },
+
+            },
+
             ["<leader>d"] = { name = "Directory" },
             ["<leader>g"] = { name = "Git" },
             ["<leader>l"] = { name = "LSP" },
@@ -24,7 +31,6 @@ return {
             ["<leader>w"] = { name = "Window" },
             ["<leader>t"] = { name = "Tools" },
 
-            ["<leader>fe"] = { vim.cmd.Ex, "Close file" },
 
         }, { mode = "n" })
     end,
