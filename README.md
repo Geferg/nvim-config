@@ -14,7 +14,10 @@ wsl --install -d Ubuntu
 ## 2. Install WezTerm
 Download and install the latest version from [wezterm.org/installation](https://wezterm.org/installation.html)
 
-## 3. Configure WezTerm
+## 3. Install a Nerd Font
+Download and install CaskaydiaCove Nerd Font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads) or [direct download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
+
+## 4. Configure WezTerm
 Create ~/.wezterm.lua and paste the config:
 ```lua
 local wezterm = require 'wezterm'
@@ -24,8 +27,8 @@ config.color_scheme = "OneHalfDark"
 
 config.font = wezterm.font_with_fallback({
     "CaskaydiaCove Nerd Font",
-    "Symbols Nerd Font Mono",
     "FiraCode Nerd Font",
+    "Symbols Nerd Font Mono",
 })
 
 config.font_size = 14.0
@@ -58,9 +61,6 @@ config.default_prog = { "wsl.exe" }
 
 return config
 ```
-
-## 4. Install a Nerd Font
-Download and install CaskaydiaCove Nerd Font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads) or [direct download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
 
 ## 5. WSL Base Setup
 Open WezTerm (with WSL) and run:
