@@ -15,8 +15,48 @@ wsl --install -d Ubuntu
 Download and install the latest version from [wezterm.org/installation](https://wezterm.org/installation.html)
 
 ## 3. Configure WezTerm
+Create ~/.wezterm.lua and paste the config:
 ```lua
--- TODO
+local wezterm = require 'wezterm'
+local config = wezterm.config_builder()
+
+config.color_scheme = "OneHalfDark"
+
+config.font = wezterm.font_with_fallback({
+    "CaskaydiaCove Nerd Font",
+    "Symbols Nerd Font Mono",
+    "FiraCode Nerd Font",
+})
+
+config.font_size = 14.0
+config.line_height = 1.1
+config.cell_width = 1.0
+
+config.window_decorations = 'RESIZE'
+config.window_background_opacity = 1.0
+config.hide_tab_bar_if_only_one_tab = true
+config.window_padding = {
+    left = 4,
+    right = 4,
+    top = 2,
+    bottom = 2,
+}
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  return {
+    { Text = " " .. tab.active_pane.title .. " " },
+  }
+end)
+
+config.scrollback_lines = 5000
+config.default_cursor_style = 'BlinkingBar'
+config.animation_fps = 60
+config.max_fps = 60
+config.audible_bell = "Disabled"
+
+config.default_prog = { "wsl.exe" }
+
+return config
 ```
 
 ## 4. Install a Nerd Font
