@@ -23,15 +23,24 @@ return {
 
                 s = { project.set_project_dir, "Set project directory" },
                 v = { project.view_project_dir, "View project (sidebar)", },
+                g = {
+                    name = "Generate project",
+                    r = { function() project.generate_project("rust") end, "Rust project" },
+                    p = { function() project.generate_project("python") end, "Python project" },
+                },
+                b = { project.build_project, "Build project" },
+                r = { project.run_project, "Run project" },
             },
 
             f = {
                 name = "Files",
+
                 t = { "<cmd>Neotree toggle<CR>", "Toggle sidebar tree" },
                 f = { files.toggle_neotree_focus, "Focus sidebar tree" },
                 e = { files.explore_parent, "Explore parent dir" },
-                s = { project.set_neotree_root_from_cursor, "Set tree directory" },
-
+                r = { files.set_neotree_root_from_cursor, "Reset tree root to cursor" },
+                s = { files.set_cwd_from_cursor, "Set CWD from file or tree" },
+                w = { files.echo_cwd, "Show working directory" },
             },
 
             t = {

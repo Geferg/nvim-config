@@ -57,4 +57,40 @@ function M.set_neotree_root_from_cursor()
   vim.notify("Neo-tree root set to:\n" .. path, vim.log.levels.INFO)
 end
 
+function M.set_cwd_from_cursor()
+  local path
+
+  local buf = vim.api.nvim_get_current_buf()
+  local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+
+  if filetype == "neo-tree" then
+    local state = require("neo-tree.sources.manager").get_state("filesystem")
+    local node = state.tree:get_node()
+    if not node then
+      vim.notify("No node selected in Neo-tree", vim.log.levels.WARN)
+      return
+    end
+    path = node:get_id()
+  else
+    local bufname = vim.api.nvim_buf_get_name(buf)
+    if bufname == "" then
+      vim.notify("No file to derive CWD from", vim.log.levels.WARN)
+      return
+    end
+    path = bufname
+  end
+
+  if vim.fn.isdirectory(path) == 0 then
+    path = vim.fn.fnamemodify(path, ":p:h")
+  end
+
+  vim.fn.chdir(path)
+  vim.notify("Working directory set to:\n" .. path, vim.log.levels.INFO)
+end
+
+function M.echo_cwd()
+  local cwd = vim.fn.getcwd()
+  vim.notify("Current working directory:\n" .. cwd, vim.log.levels.INFO)
+end
+
 return M
