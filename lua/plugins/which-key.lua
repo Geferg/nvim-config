@@ -30,6 +30,7 @@ return {
                 t = { "<cmd>Neotree toggle<CR>", "Toggle sidebar tree" },
                 f = { files.toggle_neotree_focus, "Focus sidebar tree" },
                 e = { files.explore_parent, "Explore parent dir" },
+                s = { project.set_neotree_root_from_cursor, "Set tree directory" },
 
             },
 

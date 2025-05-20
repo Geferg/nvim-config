@@ -44,4 +44,17 @@ function M.go_up_dir_in_place()
   })
 end
 
+function M.set_neotree_root_from_cursor()
+  local state = require("neo-tree.sources.manager").get_state("filesystem")
+  local node = state.tree:get_node()
+  local path = node:get_id()
+
+  if vim.fn.isdirectory(path) == 0 then
+    path = vim.fn.fnamemodify(path, ":p:h")
+  end
+
+  require("neo-tree.sources.filesystem").navigate(state, path, nil, nil)
+  vim.notify("Neo-tree root set to:\n" .. path, vim.log.levels.INFO)
+end
+
 return M
