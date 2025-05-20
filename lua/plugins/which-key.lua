@@ -16,6 +16,7 @@ return {
         local wk = require("which-key")
         local project = require("features.project")
         local files = require("features.files")
+        local misc = require("features.misc")
 
         wk.register({
             p = {
@@ -66,7 +67,7 @@ return {
         }, { mode = "n", prefix = "<leader>" })
 
         wk.register({
-            ["-"] = { files.go_up_dir_in_place, "Go up directory" },
+            ["-"] = { misc.conditional_dash, "Go up directory" },
         }, { mode = "n", prefix = ""})
     end,
 }
