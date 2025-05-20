@@ -36,6 +36,7 @@ return {
             t = {
                 name = "Tools",
                 h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
+                u = { "<cmd>UndotreeToggle<CR>", "Toggle undotree" },
             },
 
             v = {
