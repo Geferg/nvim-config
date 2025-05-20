@@ -15,10 +15,10 @@ wsl --install -d Ubuntu
 Download and install the latest version from [wezterm.org/installation](https://wezterm.org/installation.html)
 
 ## 3. Install a Nerd Font
-Download and install CaskaydiaCove Nerd Font from [nerdfonts.com](https://www.nerdfonts.com/font-downloads) or [direct download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
+Download and install CaskaydiaCove Nerd Font from [Nerd Fonts](https://www.nerdfonts.com/font-downloads), or use the [direct link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
 
 ## 4. Configure WezTerm
-Create ~/.wezterm.lua and paste the config:
+Create ~/.wezterm.lua and paste in the following configuration:
 ```lua
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
@@ -103,6 +103,8 @@ git clone https://github.com/Geferg/nvim-config
 rm -rf ~/.config/nvim
 ln -s ~/.config/nvim-config ~/.config/nvim
 ```
+
+Small note: Replace Geferg/nvim-config with your own repo if forking.
 
 ## ✅ DONE!
 Files can now be edited using `nvim` inside WezTerm.
