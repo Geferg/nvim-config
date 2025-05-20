@@ -83,13 +83,25 @@ source ~/.bashrc
 ```
 
 ## 7. Install Neovim
-TODO
+```bash
+mkdir -p ~/.local/bin
+cd ~/.local/bin
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+mv nvim-linux-x86_64.appimage nvim
+
+if ! grep -Fxq 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+fi
+```
 
 ##  8. Clone Neovim Config
 ```bash
 mkdir -p ~/.config
 cd ~/.config
-git clone https://github.com/...
+git clone https://github.com/Geferg/nvim-config
+rm -rf ~/.config/nvim
+ln -s ~/.config/nvim-config ~/.config/nvim
 ```
 
 ## ✅ DONE!
