@@ -66,7 +66,7 @@ return config
 Open WezTerm (with WSL) and run:
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt install -y curl git build-essential
+sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv
 ```
 
 ## 6. Install Starship Prompt
