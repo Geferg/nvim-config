@@ -45,3 +45,14 @@ vim.opt.showcmd = true
 vim.opt.colorcolumn = "80"
 
 vim.opt.updatetime = 250
+
+vim.cmd("syntax enable")
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+
+vim.opt.cursorline = true
