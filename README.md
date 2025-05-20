@@ -68,6 +68,16 @@ Open WezTerm (with WSL) and run:
 sudo apt update && sudo apt upgrade
 sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv
 ```
+## 6. Install Rustup
+```bash
+curl https://sh.rustup.rs -sSf | sh
+echo '[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"' >> ~/.bashrc
+```
+
+Press enter to get the standard installation and update path with:
+```bash
+source ~/.cargo/env
+```
 
 ## 6. Install Starship Prompt
 ```bash
@@ -115,6 +125,10 @@ Files can now be edited using `nvim` inside WezTerm.
 - Simple scroll animation.
 - Set top level dir in sidebar tree.
 - Startup dashboard
+- which-key inside neo-tree
+- change set working directory/set project directory behavior
+- add autohotkey script
+- fix cwd and project dir updates on netrw style buffers
 
 # Plugin Wishlist
 - tmux
