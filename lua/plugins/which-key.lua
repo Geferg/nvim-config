@@ -38,6 +38,11 @@ return {
                 h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
             },
 
+            v = {
+                name = "View",
+                t = { "<cmd>Twilight<CR>", "Toggle twilight view" },
+            },
+
             d = { name = "Directory" },
             g = { name = "Git" },
             l = { name = "LSP" },
