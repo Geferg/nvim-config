@@ -33,13 +33,18 @@ return {
 
             },
 
+            t = {
+                name = "Tools",
+                h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
+            },
+
             d = { name = "Directory" },
             g = { name = "Git" },
             l = { name = "LSP" },
             b = { name = "Build" },
             s = { name = "Splits" },
             w = { name = "Window" },
-            t = { name = "Tools" },
+
 
 
         }, { mode = "n", prefix = "<leader>" })

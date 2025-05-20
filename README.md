@@ -115,4 +115,3 @@ Files can now be edited using `nvim` inside WezTerm.
 - Project templates.
 - Simple scroll animation.
 - Set top level dir in sidebar tree.
-- Add hardtime disabled by default.
