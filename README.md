@@ -111,7 +111,26 @@ Files can now be edited using `nvim` inside WezTerm.
 
 # TODO:
 - Possibly replace flat structure with returnable module.
-- Tmux.
 - Project templates.
 - Simple scroll animation.
 - Set top level dir in sidebar tree.
+- Startup dashboard
+
+# Plugin Wishlist
+- tmux
+- trouble
+- vim-repeat
+- nvim-treesitter-context
+- telescope
+- comment
+- telescope
+- noice
+- lualine
+- harpoon
+- flash
+- nvim-treesitter-textobjects
+- nvim-autorepairs
+- gitsigns
+- diffview
+
+
