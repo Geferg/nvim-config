@@ -45,9 +45,9 @@ function M.build_project()
   if project_type == "rust" then
     cmd = "cargo build"
   elseif project_type == "make" then
-    cmd = "make"
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
   elseif project_type == "cmake" then
-    cmd = "cmake -S . -B build && cmake --build build"
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
   else
     vim.notify("No known build system in project directory.", vim.log.levels.WARN)
     return
@@ -75,11 +75,37 @@ function M.run_project()
     local binary = vim.fn.fnamemodify(root, ":t")  -- use actual folder name
     cmd = string.format("cargo build --quiet && ./target/debug/%s", binary)
   elseif project_type == "make" then
-    cmd = "make run"
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
   elseif project_type == "python" then
-    cmd = "python3 main.py"
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
   elseif project_type == "cmake" then
-    cmd = "./build/main"
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
+  else
+    vim.notify("No known run command for project type.", vim.log.levels.WARN)
+    return
+  end
+
+  run_in_term(cmd, root)
+end
+
+function M.clean_project()
+  local root = M.get_project_dir()
+  if not root then
+    vim.notify("Project directory not set.", vim.log.levels.WARN)
+    return
+  end
+
+  local project_type = detect_project_type(root)
+  local cmd
+
+  if project_type == "rust" then
+      cmd = "cargo clean"
+  elseif project_type == "make" then
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
+  elseif project_type == "python" then
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
+  elseif project_type == "cmake" then
+    vim.notify("Functionality not implemented for this project type.", vim.log.levels.WARN)
   else
     vim.notify("No known run command for project type.", vim.log.levels.WARN)
     return

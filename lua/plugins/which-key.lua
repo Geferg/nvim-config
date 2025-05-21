@@ -32,6 +32,7 @@ return {
                 },
                 b = { project.build_project, "Build project" },
                 r = { project.run_project, "Run project" },
+                c = { project.clean_project, "Clean project" },
             },
 
             f = {
