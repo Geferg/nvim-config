@@ -129,6 +129,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - target correct buffer after building project
 - auto-close build result if no errors
 - make clean project mimic build style
+- fix auto-formatting on save
 
 # Plugin Wishlist
 - tmux

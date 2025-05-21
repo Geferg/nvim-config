@@ -27,6 +27,7 @@ return {
                 v = { project.view_project_dir, "View project (sidebar)", },
                 g = {
                     name = "Generate project",
+
                     r = { function() project.generate_project("rust") end, "Rust project" },
                     p = { function() project.generate_project("python") end, "Python project" },
                 },
@@ -48,10 +49,12 @@ return {
 
             t = {
                 name = "Tools",
+
                 h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
                 u = { "<cmd>UndotreeToggle<CR>", "Toggle undotree" },
                 r = {
                     name = "Remaps",
+
                     s = { remap.sync, "Sync and reload remaps" },
                     e = { remap.enable, "Enable remaps at startup" },
                     d = { remap.disable, "Disable remaps at startup" },
@@ -60,17 +63,26 @@ return {
 
             v = {
                 name = "View",
+
                 t = { "<cmd>Twilight<CR>", "Toggle twilight view" },
             },
 
-            d = { name = "Directory" },
+            d = {
+                name = "Diagnostics",
+                d = { "<cmd>Trouble diagnostics toggle<cr>", "All Diagnostics" },
+                b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics" },
+                l = { "<cmd>Trouble loclist toggle<cr>", "Location List" },
+                q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix List" },
+                s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
+                r = { "<cmd>Trouble lsp toggle focus=false<cr>", "LSP Refs/Defs/etc." },
+            },
+
+
             g = { name = "Git" },
             l = { name = "LSP" },
             b = { name = "Build" },
             s = { name = "Splits" },
             w = { name = "Window" },
-
-
 
         }, { mode = "n", prefix = "<leader>" })
 
