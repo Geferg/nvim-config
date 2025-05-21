@@ -122,13 +122,13 @@ Files can now be edited using `nvim` inside WezTerm.
 # TODO:
 - Possibly replace flat structure with returnable module.
 - Project templates.
-- Simple scroll animation.
-- Set top level dir in sidebar tree.
 - Startup dashboard
 - which-key inside neo-tree
 - change set working directory/set project directory behavior
-- add autohotkey script
 - fix cwd and project dir updates on netrw style buffers
+- target correct buffer after building project
+- auto-close build result if no errors
+- make clean project mimic build style
 
 # Plugin Wishlist
 - tmux
