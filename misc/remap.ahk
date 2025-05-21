@@ -1,15 +1,14 @@
-; ø key
-SC01B::Send "("
-+SC01B::Send ")"
-^SC01B::Send "["
-^+SC01B::Send "]"
+#Requires AutoHotkey v2.0
+#SingleInstance
 
-; æ key
-SC01A::Send "{"
-+SC01A::Send "}"
-^SC01A::Send "["
-^+SC01A::Send "]"
+; --- ø key (vkC0) ---
+vkC0::SendText("(")             ; ø → (
++vkC0::SendText("{")            ; Shift+ø → {
+^vkC0::SendText("[")            ; Ctrl+ø → [
+<^>!vkC0::SendText("ø")         ; Ctrl+Shift+ø → original ø
 
-; AltGr (Right Alt) + o/w = original ø / æ
-<^>!o::Send "ø"
-<^>!w::Send "æ"
+; --- æ key (vkDE) ---
+vkDE::SendText(")")             ; æ → )
++vkDE::SendText("}")            ; Shift+æ → }
+^vkDE::SendText("]")            ; Ctrl+æ → ]
+<^>!vkDE::SendText("æ")         ; Ctrl+Shift+æ → original

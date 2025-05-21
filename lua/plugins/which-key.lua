@@ -17,6 +17,7 @@ return {
         local project = require("features.project")
         local files = require("features.files")
         local misc = require("features.misc")
+        local remap = require("features.remap")
 
         wk.register({
             p = {
@@ -48,6 +49,12 @@ return {
                 name = "Tools",
                 h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
                 u = { "<cmd>UndotreeToggle<CR>", "Toggle undotree" },
+                r = {
+                    name = "Remaps",
+                    s = { remap.sync, "Sync and reload remaps" },
+                    e = { remap.enable, "Enable remaps at startup" },
+                    d = { remap.disable, "Disable remaps at startup" },
+                }
             },
 
             v = {
