@@ -2,6 +2,11 @@
 
 This guide outlines how to reproduce my Neovim environment from scratch using WSL, WezTerm, Nerd Font, and Starship.
 
+### 🛠 Prerequisites:
+- Windows 11 (Windows 10 untested)
+- AutoHotkey v2
+- Bash as your WSL shell (Zsh/Fish users: adjust accordingly)
+
 ---
 
 ## 1. Install Ubuntu via WSL
@@ -11,20 +16,17 @@ Open PowerShell as Administrator and run:
 wsl --install -d Ubuntu
 ```
 
-## 2. Install WezTerm
-Download and install the latest version from [wezterm.org/installation](https://wezterm.org/installation.html)
+## 2. Install WezTerm + Nerd Font
+- Download and install [wezterm.org/installation](https://wezterm.org/installation.html)
+- Install CaskaydiaCove Nerd Font from [Nerd Fonts](https://www.nerdfonts.com/font-downloads), or use the [direct link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
 
-## 3. Install a Nerd Font
-Download and install CaskaydiaCove Nerd Font from [Nerd Fonts](https://www.nerdfonts.com/font-downloads), or use the [direct link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
-
-## 4. Configure WezTerm
-Create ~/.wezterm.lua and paste in the following configuration:
+## 3. Configure WezTerm
+Create ~/.wezterm.lua with:
 ```lua
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = "OneHalfDark"
-
 config.font = wezterm.font_with_fallback({
     "CaskaydiaCove Nerd Font",
     "FiraCode Nerd Font",
@@ -62,63 +64,47 @@ config.default_prog = { "wsl.exe" }
 return config
 ```
 
-## 5. WSL Base Setup
-Open WezTerm (with WSL) and run:
+## 4. WSL Base System + Tools
+Launch WezTerm (using WSL) and run:
+
+### Base packages:
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt install -y curl git build-essential unzip lsd python3 python3-pip python3-venv
+sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv lsd
 ```
 
-## 6. Use LSDeluxe By Default
-```bash
-echo 'alias ls="lsd"' >> ~/.bashrc
-```
-
-Apply it with the following command:
-```bash
-source ~/.bashrc
-```
-
-## 7. Install Rustup
+### Install tools via curl:
 ```bash
 curl https://sh.rustup.rs -sSf | sh
-echo '[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"' >> ~/.bashrc
-```
-
-Press enter to get the standard installation and update path with:
-```bash
-source ~/.cargo/env
-```
-
-## 8. Install Starship Prompt
-```bash
 curl -sS https://starship.rs/install.sh | sh
 ```
 
-Then add this line to the end of the `~/.bashrc`:
+### Shell config:
 ```bash
-eval "$(starship init bash)"
+echo 'alias ls="lsd"' >> ~/.bashrc
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
+echo '[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"' >> ~/.bashrc
 ```
 
-Apply it with the following command:
+### Apply changes:
 ```bash
 source ~/.bashrc
+source ~/.cargo/env
 ```
 
-## 9. Install Neovim
+## 5. Install Neovim (AppImage)
 ```bash
 mkdir -p ~/.local/bin
 cd ~/.local/bin
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 chmod u+x nvim-linux-x86_64.appimage
+[ -f nvim ] && mv nvim nvim.bak
 mv nvim-linux-x86_64.appimage nvim
-
-if ! grep -Fxq 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
-  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-fi
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-##  10. Clone Neovim Config
+## 6. Clone Neovim Config
 ```bash
 mkdir -p ~/.config
 cd ~/.config
@@ -127,14 +113,16 @@ rm -rf ~/.config/nvim
 ln -s ~/.config/nvim-config ~/.config/nvim
 ```
 
-Small note: Replace Geferg/nvim-config with your own repo if forking.
+### Notes
+- This step will clear out any old nvim config
+- Replace Geferg/nvim-config with your own repo if forking
 
 ## ✅ DONE!
 Files can now be edited using `nvim` inside WezTerm.
 
 # TODO:
 - Possibly replace flat structure with returnable module.
-- Project templates.
+- Project templates
 - Startup dashboard
 - which-key inside neo-tree
 - change set working directory/set project directory behavior
@@ -145,20 +133,42 @@ Files can now be edited using `nvim` inside WezTerm.
 - fix auto-formatting on save
 
 # Plugin Wishlist
-- tmux
-- trouble
-- vim-repeat
-- nvim-treesitter-context
-- telescope
-- comment
-- telescope
-- noice
+## Next
 - lualine
+
+## Soon
+- tmux
+- comment
 - harpoon
-- flash
-- nvim-treesitter-textobjects
-- nvim-autorepairs
+- telescope
+- nvim-autopairs
+
+## Consider
 - gitsigns
 - diffview
+- flash
+- vim-repeat
+- nvim-treesitter-context
+- nvim-treesitter-textobjects
 
+## Implemented
+- hardtime
+- lazy
+- mason-lspconfig
+- mason
+- mini-animate
+- neo-tree
+- noice
+- nvim-lspconfig
+- nvim-notify
+- nvim-treesitter
+- render-markdown
+- trouble
+- twilight
+- undotree
+- which-key
 
+- nui
+- onedark
+- plenary
+- nvim-web-devicons
