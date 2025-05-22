@@ -133,17 +133,17 @@ Files can now be edited using `nvim` inside WezTerm.
 - fix auto-formatting on save
 
 # Plugin Wishlist
-## Next
+### Next
 - lualine
 
-## Soon
+### Soon
 - tmux
 - comment
 - harpoon
 - telescope
 - nvim-autopairs
 
-## Consider
+### Consider
 - gitsigns
 - diffview
 - flash
@@ -151,7 +151,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - nvim-treesitter-context
 - nvim-treesitter-textobjects
 
-## Implemented
+### Implemented
 - hardtime
 - lazy
 - mason-lspconfig
@@ -167,7 +167,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - twilight
 - undotree
 - which-key
-
+---
 - nui
 - onedark
 - plenary
