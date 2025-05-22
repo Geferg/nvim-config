@@ -66,9 +66,20 @@ return config
 Open WezTerm (with WSL) and run:
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv
+sudo apt install -y curl git build-essential unzip lsd python3 python3-pip python3-venv
 ```
-## 6. Install Rustup
+
+## 6. Use LSDeluxe By Default
+```bash
+echo 'alias ls="lsd"' >> ~/.bashrc
+```
+
+Apply it with the following command:
+```bash
+source ~/.bashrc
+```
+
+## 7. Install Rustup
 ```bash
 curl https://sh.rustup.rs -sSf | sh
 echo '[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"' >> ~/.bashrc
@@ -79,20 +90,22 @@ Press enter to get the standard installation and update path with:
 source ~/.cargo/env
 ```
 
-## 6. Install Starship Prompt
+## 8. Install Starship Prompt
 ```bash
 curl -sS https://starship.rs/install.sh | sh
 ```
+
 Then add this line to the end of the `~/.bashrc`:
 ```bash
 eval "$(starship init bash)"
 ```
+
 Apply it with the following command:
 ```bash
 source ~/.bashrc
 ```
 
-## 7. Install Neovim
+## 9. Install Neovim
 ```bash
 mkdir -p ~/.local/bin
 cd ~/.local/bin
@@ -105,7 +118,7 @@ if ! grep -Fxq 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
 fi
 ```
 
-##  8. Clone Neovim Config
+##  10. Clone Neovim Config
 ```bash
 mkdir -p ~/.config
 cd ~/.config
