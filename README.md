@@ -133,6 +133,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - fix auto-formatting on save
 - update which-key bindings to suggested spec
 - fix bug with unfocusing tree onto file with no file extension
+- fix icon misalignment in neo-tree
 
 # Plugin Wishlist
 ### Next
