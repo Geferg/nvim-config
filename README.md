@@ -70,7 +70,7 @@ Launch WezTerm (using WSL) and run:
 ### Base packages:
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv lsd
+sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv lsd tmux
 ```
 
 ### Install tools via curl:
@@ -131,13 +131,14 @@ Files can now be edited using `nvim` inside WezTerm.
 - auto-close build result if no errors
 - make clean project mimic build style
 - fix auto-formatting on save
+- update which-key bindings to suggested spec
+- fix bug with unfocusing tree onto file with no file extension
 
 # Plugin Wishlist
 ### Next
 - lualine
 
 ### Soon
-- tmux
 - comment
 - harpoon
 - telescope
@@ -166,6 +167,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - trouble
 - twilight
 - undotree
+- vim-tmux-navigator
 - which-key
 ---
 - nui
