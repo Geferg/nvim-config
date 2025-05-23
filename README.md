@@ -130,6 +130,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - make clean project mimic build style
 - fix bug with unfocusing tree onto file with no file extension
 - fix icon misalignment in neo-tree
+- track down reason for sometimes getting extremely slow pastes
 
 # Plugin Wishlist
 ### Next
@@ -146,6 +147,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - vim-repeat
 - nvim-treesitter-context
 - nvim-treesitter-textobjects
+- wakatime
 
 ### Implemented
 - hardtime
