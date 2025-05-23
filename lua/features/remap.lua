@@ -2,15 +2,15 @@
 -- Sync remap.ahk between WSL and Windows and (re)load AutoHotkey v2
 -------------------------------------------------------------------------------
 
-local M = {}
+local M           = {}
 
 ---------------------------------------------------------------------
 -- Paths (edit here if layout differs)
 ---------------------------------------------------------------------
 local wsl_src     = vim.fn.expand("$HOME/.config/nvim/misc/remap.ahk")
-local shared_base = "C:\\ProgramData\\nvim-config"          -- one place for all users
-local win_dest    = shared_base .. "\\remap.ahk"            -- active copy
-local startup_lnk = shared_base .. "\\remap.lnk"            -- optional startup link
+local shared_base = "C:\\ProgramData\\nvim-config" -- one place for all users
+local win_dest    = shared_base .. "\\remap.ahk"   -- active copy
+local startup_lnk = shared_base .. "\\remap.lnk"   -- optional startup link
 
 -- Hard require AutoHotkey v2 x64. Change to AutoHotkey32.exe on 32-bit systems.
 local ahk_exe     = "C:\\Program Files\\AutoHotkey\\v2\\AutoHotkey64.exe"
@@ -24,8 +24,8 @@ local function ps(cmd)
     local ok  = (vim.v.shell_error == 0)
     if not ok then
         vim.notify(("⚠️  PowerShell error (%d):\n%s")
-        :format(vim.v.shell_error, out),
-        vim.log.levels.ERROR)
+            :format(vim.v.shell_error, out),
+            vim.log.levels.ERROR)
     end
     return ok, out
 end
@@ -38,9 +38,9 @@ end
 --- Convert Windows path (C:\foo\bar) to WSL mount (/mnt/c/foo/bar)
 local function to_wsl(path)
     return path
-    :gsub("^([A-Za-z]):\\", "/mnt/%1/")
-    :gsub("\\", "/")
-    :lower()
+        :gsub("^([A-Za-z]):\\", "/mnt/%1/")
+        :gsub("\\", "/")
+        :lower()
 end
 
 ---------------------------------------------------------------------
@@ -49,7 +49,7 @@ end
 --- Ensure the shared folder exists in Windows
 local function ensure_dir()
     return ps(("New-Item -Path '%s' -ItemType Directory -Force")
-    :format(sq(shared_base)))
+        :format(sq(shared_base)))
 end
 
 --- Copy the AHK script from WSL into Windows ProgramData
@@ -153,7 +153,7 @@ function M.enable()
         "-NoProfile",
         "-Command",
         ("Start-Process -Verb RunAs -FilePath powershell.exe "
-        .. "-ArgumentList ('-NoProfile','-Command','%s')"):format(sq(ps_script))
+            .. "-ArgumentList ('-NoProfile','-Command','%s')"):format(sq(ps_script))
     }
 
     -- This call will pop the UAC prompt.  If the user accepts, it runs the registry add.
@@ -183,14 +183,14 @@ function M.disable()
         "-NoProfile",
         "-Command",
         ("Start-Process -Verb RunAs -FilePath powershell.exe "
-        .. "-ArgumentList ('-NoProfile','-Command','%s')"):format(sq(ps_script))
+            .. "-ArgumentList ('-NoProfile','-Command','%s')"):format(sq(ps_script))
     }
 
     -- This will pop the UAC dialog. If they accept, the key is removed.
     vim.fn.system(elevate_cmd)
     if vim.v.shell_error ~= 0 then
         vim.notify("⚠️  Could not remove startup entry (administrator privileges required)",
-        vim.log.levels.ERROR)
+            vim.log.levels.ERROR)
         return false
     end
 
