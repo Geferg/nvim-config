@@ -133,10 +133,9 @@ Files can now be edited using `nvim` inside WezTerm.
 
 # Plugin Wishlist
 ### Next
-- nvim-autopairs
+- comment
 
 ### Soon
-- comment
 - harpoon
 - telescope
 
@@ -156,6 +155,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - mini-animate
 - neo-tree
 - noice
+- nvim-autopairs
 - nvim-lspconfig
 - nvim-notify
 - nvim-treesitter
