@@ -25,9 +25,9 @@ return {
                 },
             },
             disable = {
-                buftypes = {}, -- allow "nofile"
+                buftypes = {},  -- allow "nofile"
                 filetypes = {}, -- allow "neo-tree"
             },
         },
-    }
+    },
 }

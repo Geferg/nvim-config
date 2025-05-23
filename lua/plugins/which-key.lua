@@ -78,7 +78,6 @@ return {
                     r = { "<cmd>Trouble lsp toggle focus=false<cr>", "LSP Refs/Defs/etc." },
                 },
 
-
                 g = { name = "Git" },
                 l = { name = "LSP" },
                 b = { name = "Build" },
