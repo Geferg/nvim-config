@@ -69,15 +69,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "neo-tree",
-    callback = function()
-        vim.keymap.set("n", "<leader>", function()
-            require("which-key").show("<leader>")
-        end, { buffer = true, noremap = true, silent = true })
-    end,
-})
-
 -- Autoformat on save if LSP supports formatting, otherwise fallback to gg=G
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = {

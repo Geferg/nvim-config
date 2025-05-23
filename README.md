@@ -123,7 +123,6 @@ Files can now be edited using `nvim` inside WezTerm.
 # TODO:
 - Project templates
 - Startup dashboard
-- which-key inside neo-tree
 - change set working directory/set project directory behavior
 - fix cwd and project dir updates on netrw style buffers
 - target correct buffer after building project

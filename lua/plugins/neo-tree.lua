@@ -7,26 +7,40 @@ return {
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
-        lazy = false, -- neo-tree will lazily load itself
+        lazy = false,
         opts = {
             close_if_last_window = true,
-            enable_git_status = true,
-            enable_diagnostics = true,
-            filesystem = {
+            enable_git_status    = true,
+            enable_diagnostics   = true,
+
+            --─── source-specific settings ──────────────────────────────────────
+            filesystem           = {
                 filtered_items = {
-                    visible = true, -- show hidden files by default
-                    hide_dotfiles = false,
+                    visible         = true,
+                    hide_dotfiles   = false,
                     hide_gitignored = false,
                 },
-            },
-            window = {
-                mappings = {
-                    ["<leader>"] = nil,
+                window = {
+                    mappings = {
+                        ["<space>"] = "none",
+                    },
                 },
             },
-            disable = {
-                buftypes = {},  -- allow "nofile"
-                filetypes = {}, -- allow "neo-tree"
+
+            buffers              = { window = { mappings = { ["<space>"] = "none" } } },
+            git_status           = { window = { mappings = { ["<space>"] = "none" } } },
+            document_symbols     = { window = { mappings = { ["<space>"] = "none" } } },
+
+            --─── fallback / global window options ─────────────────────────────
+            window               = {
+                mappings = {
+                    ["<space>"] = "none",
+                },
+            },
+
+            disable              = {
+                buftypes  = {},
+                filetypes = {},
             },
         },
     },
