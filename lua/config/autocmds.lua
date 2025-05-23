@@ -95,7 +95,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         "*.php",                              -- PHP
         "*.rb",                               -- Ruby
         "*.html", "*.htm", "*.css", "*.scss", -- Web
-        "*.md",                               -- Markdown
         "*.tex",                              -- LaTeX
         "*.sql",                              -- SQL
         "*.vim",                              -- Vimscript

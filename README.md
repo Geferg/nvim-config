@@ -137,13 +137,12 @@ Files can now be edited using `nvim` inside WezTerm.
 
 # Plugin Wishlist
 ### Next
-- lualine
+- nvim-autopairs
 
 ### Soon
 - comment
 - harpoon
 - telescope
-- nvim-autopairs
 
 ### Consider
 - gitsigns
