@@ -64,6 +64,12 @@ config.default_prog = { "wsl.exe" }
 return config
 ```
 
+If you are unsure how to create this file, do:
+1. `nano ~/.wezterm.lua`
+2. paste in the code above
+3. save with ctrl + o and press enter
+4. close with ctrl + x
+
 ## 4. WSL Base System + Tools
 Launch WezTerm (using WSL) and run:
 
@@ -114,7 +120,7 @@ ln -s ~/.config/nvim-config ~/.config/nvim
 ```
 
 ### Notes
-- This step will clear out any old nvim config
+- This step will clear out any old nvim config, make sure you are inside the new WSL
 - Replace Geferg/nvim-config with your own repo if forking
 
 ## ✅ DONE!
@@ -152,6 +158,7 @@ Files can now be edited using `nvim` inside WezTerm.
 ### Implemented
 - hardtime
 - lazy
+- lualine
 - mason-lspconfig
 - mason
 - mini-animate
