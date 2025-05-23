@@ -20,75 +20,74 @@ return {
             local misc = require("features.misc")
             local remap = require("features.remap")
 
-            wk.register({
-                p = {
-                    name = "Project",
+            wk.add({
+                ---------------------------------------------------------------
+                -- Project
+                ---------------------------------------------------------------
+                { "<leader>p",   group = "Project" },
+                { "<leader>pb",  project.build_project,                              desc = "build project" },
+                { "<leader>pc",  project.clean_project,                              desc = "clean project" },
+                { "<leader>pr",  project.run_project,                                desc = "run project" },
+                { "<leader>ps",  project.set_project_dir,                            desc = "set project directory" },
+                { "<leader>pv",  project.view_project_dir,                           desc = "view project (sidebar)" },
 
-                    s = { project.set_project_dir, "Set project directory" },
-                    v = { project.view_project_dir, "View project (sidebar)", },
-                    g = {
-                        name = "Generate project",
+                { "<leader>pg",  group = "Generate project" },
+                { "<leader>pgp", function() project.generate_project("python") end,  desc = "python project" },
+                { "<leader>pgr", function() project.generate_project("rust") end,    desc = "rust project" },
 
-                        r = { function() project.generate_project("rust") end, "Rust project" },
-                        p = { function() project.generate_project("python") end, "Python project" },
-                    },
-                    b = { project.build_project, "Build project" },
-                    r = { project.run_project, "Run project" },
-                    c = { project.clean_project, "Clean project" },
-                },
+                ---------------------------------------------------------------
+                -- Diagnostics (Trouble)
+                ---------------------------------------------------------------
+                { "<leader>d",   group = "Diagnostics" },
+                { "<leader>db",  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "buffer diagnostics" },
+                { "<leader>dd",  "<cmd>Trouble diagnostics toggle<cr>",              desc = "all diagnostics" },
+                { "<leader>dl",  "<cmd>Trouble loclist toggle<cr>",                  desc = "location list" },
+                { "<leader>dq",  "<cmd>Trouble qflist toggle<cr>",                   desc = "quickfix list" },
+                { "<leader>dr",  "<cmd>Trouble lsp toggle focus=false<cr>",          desc = "lsp refs/defs/etc." },
+                { "<leader>ds",  "<cmd>Trouble symbols toggle focus=false<cr>",      desc = "symbols" },
 
-                f = {
-                    name = "Files",
+                ---------------------------------------------------------------
+                -- Files
+                ---------------------------------------------------------------
+                { "<leader>f",   group = "Files" },
+                { "<leader>fe",  files.explore_parent,                               desc = "explore parent dir" },
+                { "<leader>ff",  files.toggle_neotree_focus,                         desc = "focus sidebar tree" },
+                { "<leader>fr",  files.set_neotree_root_from_cursor,                 desc = "reset tree root to cursor" },
+                { "<leader>fs",  files.set_cwd_from_cursor,                          desc = "set cwd from file or tree" },
+                { "<leader>fw",  files.echo_cwd,                                     desc = "show working directory" },
+                { "<leader>ft",  "<cmd>Neotree toggle<cr>",                          desc = "toggle sidebar tree" },
 
-                    t = { "<cmd>Neotree toggle<CR>", "Toggle sidebar tree" },
-                    f = { files.toggle_neotree_focus, "Focus sidebar tree" },
-                    e = { files.explore_parent, "Explore parent dir" },
-                    r = { files.set_neotree_root_from_cursor, "Reset tree root to cursor" },
-                    s = { files.set_cwd_from_cursor, "Set CWD from file or tree" },
-                    w = { files.echo_cwd, "Show working directory" },
-                },
+                ---------------------------------------------------------------
+                -- Tools
+                ---------------------------------------------------------------
+                { "<leader>t",   group = "Tools" },
+                { "<leader>th",  "<cmd>Hardtime toggle<cr>",                         desc = "toggle hardtime hints" },
+                { "<leader>tu",  "<cmd>UndotreeToggle<cr>",                          desc = "toggle undotree" },
 
-                t = {
-                    name = "Tools",
+                { "<leader>tr",  group = "Remaps" },
+                { "<leader>trd", remap.disable,                                      desc = "disable remaps at startup" },
+                { "<leader>tre", remap.enable,                                       desc = "enable remaps at startup" },
+                { "<leader>trs", remap.sync,                                         desc = "sync and reload remaps" },
 
-                    h = { "<cmd>Hardtime toggle<CR>", "Toggle hardtime hints" },
-                    u = { "<cmd>UndotreeToggle<CR>", "Toggle undotree" },
-                    r = {
-                        name = "Remaps",
+                ---------------------------------------------------------------
+                -- View
+                ---------------------------------------------------------------
+                { "<leader>v",   group = "View" },
+                { "<leader>vt",  "<cmd>Twilight<CR>",                                desc = "Toggle twilight view" },
 
-                        s = { remap.sync, "Sync and reload remaps" },
-                        e = { remap.enable, "Enable remaps at startup" },
-                        d = { remap.disable, "Disable remaps at startup" },
-                    }
-                },
+                ---------------------------------------------------------------
+                -- Unused
+                ---------------------------------------------------------------
+                { "<leader>w",   group = "Window" },
+                { "<leader>g",   group = "Git" },
+                { "<leader>s",   group = "Splits" },
 
-                v = {
-                    name = "View",
+                ---------------------------------------------------------------
+                -- Non-leader
+                ---------------------------------------------------------------
+                { "-",           misc.conditional_dash,                              desc = "go up directory" },
 
-                    t = { "<cmd>Twilight<CR>", "Toggle twilight view" },
-                },
-
-                d = {
-                    name = "Diagnostics",
-                    d = { "<cmd>Trouble diagnostics toggle<cr>", "All Diagnostics" },
-                    b = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics" },
-                    l = { "<cmd>Trouble loclist toggle<cr>", "Location List" },
-                    q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix List" },
-                    s = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols" },
-                    r = { "<cmd>Trouble lsp toggle focus=false<cr>", "LSP Refs/Defs/etc." },
-                },
-
-                g = { name = "Git" },
-                l = { name = "LSP" },
-                b = { name = "Build" },
-                s = { name = "Splits" },
-                w = { name = "Window" },
-
-            }, { mode = "n", prefix = "<leader>" })
-
-            wk.register({
-                ["-"] = { misc.conditional_dash, "Go up directory" },
-            }, { mode = "n", prefix = "" })
+            }, { mode = "n" })
         end,
     },
 }

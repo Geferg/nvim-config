@@ -121,7 +121,6 @@ ln -s ~/.config/nvim-config ~/.config/nvim
 Files can now be edited using `nvim` inside WezTerm.
 
 # TODO:
-- Possibly replace flat structure with returnable module.
 - Project templates
 - Startup dashboard
 - which-key inside neo-tree
@@ -130,8 +129,6 @@ Files can now be edited using `nvim` inside WezTerm.
 - target correct buffer after building project
 - auto-close build result if no errors
 - make clean project mimic build style
-- fix auto-formatting on save
-- update which-key bindings to suggested spec
 - fix bug with unfocusing tree onto file with no file extension
 - fix icon misalignment in neo-tree
 
