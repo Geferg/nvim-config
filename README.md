@@ -21,7 +21,7 @@ wsl --install -d Ubuntu
 - Install CaskaydiaCove Nerd Font from [Nerd Fonts](https://www.nerdfonts.com/font-downloads), or use the [direct link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip)
 
 ## 3. Configure WezTerm
-Create ~/.wezterm.lua with:
+Create ~/.wezterm.lua on the windows system with:
 ```lua
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
@@ -59,7 +59,7 @@ config.animation_fps = 60
 config.max_fps = 60
 config.audible_bell = "Disabled"
 
-config.default_prog = { "wsl.exe" }
+config.default_prog = { "wsl.exe", "--cd", "~" }
 
 return config
 ```
