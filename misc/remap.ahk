@@ -12,3 +12,6 @@ vkDE::SendText(")")             ; æ → )
 +vkDE::SendText("}")            ; Shift+æ → }
 ^vkDE::SendText("]")            ; Ctrl+æ → ]
 <^>!vkDE::SendText("æ")         ; Ctrl+Shift+æ → original
+
+CapsLock::Esc
+Esc::CapsLock
