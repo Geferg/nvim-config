@@ -39,8 +39,8 @@ return {
                 -- Diagnostics (Trouble)
                 ---------------------------------------------------------------
                 { "<leader>d",   group = "Diagnostics" },
-                { "<leader>db",  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "buffer diagnostics" },
-                { "<leader>dd",  "<cmd>Trouble diagnostics toggle<cr>",              desc = "all diagnostics" },
+                { "<leader>dd",  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "buffer diagnostics" },
+                { "<leader>da",  "<cmd>Trouble diagnostics toggle<cr>",              desc = "all diagnostics" },
                 { "<leader>dl",  "<cmd>Trouble loclist toggle<cr>",                  desc = "location list" },
                 { "<leader>dq",  "<cmd>Trouble qflist toggle<cr>",                   desc = "quickfix list" },
                 { "<leader>dr",  "<cmd>Trouble lsp toggle focus=false<cr>",          desc = "lsp refs/defs/etc." },
