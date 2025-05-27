@@ -137,14 +137,17 @@ Files can now be edited using `nvim` inside WezTerm.
 - fix bug with unfocusing tree onto file with no file extension
 - fix icon misalignment in neo-tree
 - track down reason for sometimes getting extremely slow pastes
+- fix bug where LSP times out on auto-formatting rouge brackets(?)
 
 # Plugin Wishlist
 ### Next
 - comment
 
 ### Soon
-- harpoon
+- harpoon/grapple
 - telescope
+- focus
+- zen-mode
 
 ### Consider
 - gitsigns
@@ -153,7 +156,10 @@ Files can now be edited using `nvim` inside WezTerm.
 - vim-repeat
 - nvim-treesitter-context
 - nvim-treesitter-textobjects
-- wakatime
+- nvim-cokeline
+- hologram
+- presence
+- nvim-surround
 
 ### Implemented
 - hardtime
@@ -162,6 +168,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - mason-lspconfig
 - mason
 - mini-animate
+- modicator
 - neo-tree
 - noice
 - nvim-autopairs
@@ -173,6 +180,7 @@ Files can now be edited using `nvim` inside WezTerm.
 - twilight
 - undotree
 - vim-tmux-navigator
+- wakatime
 - which-key
 ---
 - nui
