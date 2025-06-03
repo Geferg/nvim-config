@@ -76,7 +76,7 @@ Launch WezTerm (using WSL) and run:
 ### Base packages:
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv lsd tmux
+sudo apt install -y curl git build-essential unzip python3 python3-pip python3-venv lsd tmux pkg-config libssl-dev
 ```
 
 ### Install tools via curl:
@@ -117,6 +117,11 @@ cd ~/.config
 git clone https://github.com/Geferg/nvim-config
 rm -rf ~/.config/nvim
 ln -s ~/.config/nvim-config ~/.config/nvim
+```
+
+## 7. Extras
+```bash
+cargo install cargo-generate
 ```
 
 ### Notes
