@@ -15,7 +15,7 @@ return {
         },
         config = function()
             local wk = require("which-key")
-            local keybindings = require("config.keybindings")
+            local keybindings = require("features.keybindings")
 
             wk.add(keybindings, { mode = "n" })
         end,
