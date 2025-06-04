@@ -142,7 +142,7 @@ This folder contains all Lua code used in the config. It's organized into three 
 These files are directly referenced from `init.lua`.
 - `options.lua`: Basic Neovim settings.
 - `lazy.lua`: Bootstraps the plugin manager and loads all plugin definitions from the `plugins/` folder.
-- `lsp.lua`: Sets up the built-in LSP client. No need for something like Mason.
+- `lsp.lua`: Sets up the built-in LSP client. No need for something like `mason-lspconfig`.
 - `autocmds.lua`: Where autocommands go. (Mind-blowing.)
 
 ### Features
