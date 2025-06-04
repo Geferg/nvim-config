@@ -131,6 +131,29 @@ cargo install cargo-generate
 ## ✅ DONE!
 Files can now be edited using `nvim` inside WezTerm.
 
+# File structure
+## Root
+This is where the main config entry point (`init.lua`) lives, along with this README, Git-related files, and the `lazy-lock.json` which stores exact plugin versions used by Lazy.
+
+## lua/
+This folder contains all Lua code used in the config. It's organized into three main subfolders, each with a clear purpose:
+
+### Config/
+These files are directly referenced from `init.lua`.
+- `options.lua`: Basic Neovim settings.
+- `lazy.lua`: Bootstraps the plugin manager and loads all plugin definitions from the `plugins/` folder.
+- `lsp.lua`: Sets up the built-in LSP client. No need for something like Mason.
+- `autocmds.lua`: Where autocommands go. (Mind-blowing.)
+
+### Features
+This folder contains helper functions or logic that are too long or general-purpose to belong in a single plugin file. They're used across different parts of the config.
+
+### Plugins
+Each plugin gets its own file for setup and configuration. This makes it easy to locate or modify a specific plugin. You can also "disable" a plugin by renaming its file to end with `.bak`.
+
+## Misc
+A catch-all for anything that is necessary but does not belong anywhere else. It might get further organized.. or not.
+
 # TODO:
 - Project templates
 - Startup dashboard
