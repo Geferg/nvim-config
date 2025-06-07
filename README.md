@@ -119,14 +119,14 @@ rm -rf ~/.config/nvim
 ln -s ~/.config/nvim-config ~/.config/nvim
 ```
 
+### Notes
+- This step will clear out any old nvim config, make sure you are inside the new WSL
+- Replace Geferg/nvim-config with your own repo if forking
+
 ## 7. Extras
 ```bash
 cargo install cargo-generate
 ```
-
-### Notes
-- This step will clear out any old nvim config, make sure you are inside the new WSL
-- Replace Geferg/nvim-config with your own repo if forking
 
 ## ✅ DONE!
 Files can now be edited using `nvim` inside WezTerm.
