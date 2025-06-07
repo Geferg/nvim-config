@@ -2,7 +2,18 @@
 -- Sync remap.ahk between WSL and Windows and (re)load AutoHotkey v2
 -------------------------------------------------------------------------------
 
-local M           = {}
+local M = {}
+
+-- Abort on non-WSL systems
+if not vim.loop.fs_stat("/proc/version") then
+    return M -- not even Linux
+end
+
+local version_content = vim.fn.readfile("/proc/version")[1] or ""
+if not version_content:match("Microsoft") and not version_content:match("WSL") then
+    vim.notify("AHK sync disabled: not running in WSL", vim.log.levels.INFO)
+    return M
+end
 
 ---------------------------------------------------------------------
 -- Paths (edit here if layout differs)
