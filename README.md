@@ -166,6 +166,7 @@ A catch-all for anything that is necessary but does not belong anywhere else. It
 - fix icon misalignment in neo-tree
 - track down reason for sometimes getting extremely slow pastes
 - fix bug where LSP times out on auto-formatting rouge brackets(?)
+- add cross-platform hotkey setup
 
 # Plugin Wishlist
 ### Next

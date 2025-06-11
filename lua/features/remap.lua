@@ -11,7 +11,8 @@ end
 
 local version_content = vim.fn.readfile("/proc/version")[1] or ""
 if not version_content:match("Microsoft") and not version_content:match("WSL") then
-    vim.notify("AHK sync disabled: not running in WSL", vim.log.levels.INFO)
+    -- silently skip AHK
+    --vim.notify("AHK sync disabled: not running in WSL", vim.log.levels.INFO)
     return M
 end
 
