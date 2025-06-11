@@ -1,7 +1,7 @@
 local M = {}
 
 local project_root = nil
-
+local host = require("features.host")
 local uv = vim.loop
 
 -- Detect project type
@@ -14,20 +14,53 @@ local function detect_project_type(root)
 end
 
 local function run_in_term(cmd, cwd)
-    -- Ensure environment setup (fix for cargo not found)
-    local escaped_cmd = string.format(
-        "source ~/.profile; cd '%s' && %s; exec bash",
+    -- shell snippet we want to execute *inside* the spawned terminal
+    local shell_snippet = string.format(
+        "source ~/.profile; cd %q && %s; exec bash",
         cwd,
         cmd
     )
 
-    local wezterm_cmd = {
-        "wezterm.exe", "start", "wsl", "-e", "bash", "-c", escaped_cmd
-    }
+    ---------------------------------------------------------------------------
+    -- Build argv for wezterm depending on where Neovim is running
+    ---------------------------------------------------------------------------
+    local wezterm_cmd
 
-    local result = vim.fn.jobstart(wezterm_cmd, { detach = true })
+    if host.is_windows() and not host.is_wsl() then
+        -------------------------------------------------------------------------
+        -- Neovim running on native Windows
+        -- We launch a new tab in the user’s default shell (PowerShell here).
+        -- (Switch to cmd /C or Git-Bash if that’s your preference.)
+        -------------------------------------------------------------------------
+        wezterm_cmd = {
+            "wezterm.exe", "start", "powershell",
+            "-NoLogo", "-NoExit", "-Command", shell_snippet,
+        }
+    elseif host.is_wsl() then
+        -------------------------------------------------------------------------
+        -- Neovim running *inside* WSL
+        -- We call the Windows copy of wezterm.exe, telling it to
+        -- start another WSL instance that runs our shell snippet.
+        -------------------------------------------------------------------------
+        wezterm_cmd = {
+            "wezterm.exe", "start", "wsl",
+            "-e", "bash", "-c", shell_snippet,
+        }
+    elseif host.is_linux() then
+        -------------------------------------------------------------------------
+        -- Neovim running on “real” Linux (outside WSL)
+        -------------------------------------------------------------------------
+        wezterm_cmd = {
+            "wezterm", "start", "--", "bash", "-c", shell_snippet,
+        }
+    else
+        vim.notify("Unsupported host for run_in_term()", vim.log.levels.ERROR)
+        return
+    end
 
-    if result <= 0 then
+    -- Fire and forget
+    local ok = vim.fn.jobstart(wezterm_cmd, { detach = true })
+    if ok <= 0 then
         vim.notify("Failed to launch external terminal", vim.log.levels.ERROR)
     end
 end
