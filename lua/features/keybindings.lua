@@ -2,6 +2,7 @@ local project = require("features.project")
 local files = require("features.files")
 local misc = require("features.misc")
 local remap = require("features.remap")
+local host = require("features.host")
 
 return {
     {
@@ -52,6 +53,9 @@ return {
         { "<leader>trd", remap.disable,                                      desc = "disable remaps at startup" },
         { "<leader>tre", remap.enable,                                       desc = "enable remaps at startup" },
         { "<leader>trs", remap.sync,                                         desc = "sync and reload remaps" },
+
+        { "<leader>td",  group = "Debug config" },
+        { "<leader>tdo", host.notify_os,                                     desc = "types" },
 
         ---------------------------------------------------------------
         -- View
