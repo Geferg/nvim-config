@@ -164,6 +164,29 @@ project_generators.rust = function(name)
     vim.notify("Rust project '" .. name .. "' created!", vim.log.levels.INFO)
 end
 
+project_generators.ratatui = function(name)
+    local cwd = vim.fn.getcwd()
+    local path = cwd .. "/" .. name
+
+    local result = vim.fn.system({
+        "cargo", "generate",
+        "--define", "description=",
+        "ratatui/templates", "simple",
+        "--name", name,
+        "--silent",
+        "--force"
+    })
+
+    if vim.v.shell_error ~= 0 then
+        vim.notify("Failed to generate Ratatui project:\n" .. result, vim.log.levels.ERROR)
+        return
+    end
+
+    require("features.project").set_project_dir_explicit(path)
+    vim.cmd("e " .. path .. "/src/main.rs")
+    vim.notify("Ratatui project '" .. name .. "' created!", vim.log.levels.INFO)
+end
+
 function M.generate_project(kind)
     local generator = project_generators[kind]
     if not generator then
