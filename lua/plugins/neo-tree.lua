@@ -20,11 +20,16 @@ return {
                     hide_dotfiles   = false,
                     hide_gitignored = false,
                 },
+                follow_current_file = {
+                    enabled = true,
+                    leave_dirs_open = true,
+                },
                 window = {
                     mappings = {
                         ["<space>"] = "none",
                     },
                 },
+                --hijack_netrw_behavior = "open_default",
             },
 
             buffers              = { window = { mappings = { ["<space>"] = "none" } } },

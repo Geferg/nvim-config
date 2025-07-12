@@ -3,7 +3,8 @@ local files = require("features.files")
 local misc = require("features.misc")
 local remap = require("features.remap")
 local host = require("features.host")
-local harpoon = require("harpoon")
+--local commenting = require("features.commenting")
+--local harpoon = require("harpoon")
 
 return {
     {
@@ -46,6 +47,11 @@ return {
         { "<leader>fs",    files.set_cwd_from_cursor,                                   desc = "set cwd from file or tree" },
         { "<leader>fw",    files.echo_cwd,                                              desc = "show working directory" },
         { "<leader>ft",    "<cmd>Neotree toggle<cr>",                                   desc = "toggle sidebar tree" },
+
+        ---------------------------------------------------------------
+        -- Commenting
+        ---------------------------------------------------------------
+        --{ "<leader>c",     commenting.smart_toggle(),                                   desc = "Comment selected lines" },
 
         ---------------------------------------------------------------
         -- Harpoon
