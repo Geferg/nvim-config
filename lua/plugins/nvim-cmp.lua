@@ -19,7 +19,7 @@ return {
                     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
                     -- Confirm selection
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
                     -- Manually trigger completion
                     ["<C-Space>"] = cmp.mapping.complete(),
