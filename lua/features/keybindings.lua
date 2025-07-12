@@ -88,6 +88,7 @@ return {
         { "<leader>bt",    group = "Typr" },
         { "<leader>btt",   "<cmd>Typr<cr>",                                             desc = "Typr test" },
         { "<leader>bts",   "<cmd>TyprStats<cr>",                                        desc = "Typr stats" },
+        { "<leader>bm",    "<cmd>Store<cr>",                                            desc = "Plugin magazine" },
 
         ---------------------------------------------------------------
         -- Unused
