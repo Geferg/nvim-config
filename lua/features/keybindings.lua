@@ -41,7 +41,7 @@ return {
         ---------------------------------------------------------------
         { "<leader>f",     group = "Files" },
         { "<leader>fe",    files.explore_parent,                                        desc = "explore parent dir" },
-        { "<leader>ff",    files.toggle_neotree_focus,                                  desc = "focus sidebar tree" },
+        { "<leader>ff",    files.toggle_focus,                                          desc = "focus sidebar tree" },
         { "<leader>fr",    files.set_neotree_root_from_cursor,                          desc = "reset tree root to cursor" },
         { "<leader>fs",    files.set_cwd_from_cursor,                                   desc = "set cwd from file or tree" },
         { "<leader>fw",    files.echo_cwd,                                              desc = "show working directory" },
@@ -79,6 +79,7 @@ return {
         ---------------------------------------------------------------
         { "<leader>v",     group = "View" },
         { "<leader>vt",    "<cmd>Twilight<CR>",                                         desc = "Toggle twilight view" },
+        { "<leader>vc",    "<cmd>Themery<CR>",                                          desc = "Select colorscheme" },
 
         ---------------------------------------------------------------
         -- FunBox
