@@ -71,7 +71,7 @@ return {
         { "<leader>th",    "<cmd>Hardtime toggle<cr>",                                  desc = "toggle hardtime hints" },
         { "<leader>tu",    "<cmd>UndotreeToggle<cr>",                                   desc = "toggle undotree" },
         { "<leader>tc",    "<cmd>VimCoach<cr>",                                         desc = "Vim cheat-sheet" },
-        { "<leader>tj",    "<cmd>JsonGraphView<cr>",                                    desc = "Analyze JSON" },
+        { "<leader>tj",    "<cmd>JsonGraphView<cr>",                                    desc = "JSON visualizer" },
 
         { "<leader>tr",    group = "Remaps" },
         { "<leader>trd",   remap.disable,                                               desc = "disable remaps at startup" },
