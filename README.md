@@ -170,17 +170,11 @@ A catch-all for anything that is necessary but does not belong anywhere else. It
 
 # Plugin Wishlist
 ### Next
-- comment
 
 ### Soon
-- harpoon/grapple
-- telescope
-- focus
 - zen-mode
 
 ### Consider
-- gitsigns
-- diffview
 - flash
 - vim-repeat
 - nvim-treesitter-context
@@ -189,30 +183,3 @@ A catch-all for anything that is necessary but does not belong anywhere else. It
 - hologram
 - presence
 - nvim-surround
-
-### Implemented
-- hardtime
-- lazy
-- lualine
-- mason-lspconfig
-- mason
-- mini-animate
-- modicator
-- neo-tree
-- noice
-- nvim-autopairs
-- nvim-lspconfig
-- nvim-notify
-- nvim-treesitter
-- render-markdown
-- trouble
-- twilight
-- undotree
-- vim-tmux-navigator
-- wakatime
-- which-key
----
-- nui
-- onedark
-- plenary
-- nvim-web-devicons
