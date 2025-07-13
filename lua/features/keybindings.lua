@@ -3,8 +3,7 @@ local files = require("features.files")
 local misc = require("features.misc")
 local remap = require("features.remap")
 local host = require("features.host")
---local commenting = require("features.commenting")
---local harpoon = require("harpoon")
+local harpoon = require("harpoon")
 local config = vim.fn.stdpath("config")
 
 return {
