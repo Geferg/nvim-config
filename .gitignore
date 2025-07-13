@@ -6,3 +6,7 @@
 
 # lazy
 ~/.local/share/nvim/lazy
+
+# ignore extmark-sniffer outputs
+/misc/extmark-sniffer/*.txt
+/misc/extmark-sniffer/*.json
