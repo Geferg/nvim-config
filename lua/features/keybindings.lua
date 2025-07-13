@@ -79,7 +79,8 @@ return {
         { "<leader>trs",   remap.sync,                                                  desc = "sync and reload remaps" },
 
         { "<leader>td",    group = "Debug config" },
-        { "<leader>tdo",   host.notify_os,                                              desc = "types" },
+        { "<leader>tdo",   host.notify_os,                                                               desc = "check host os" },
+        { "<leader>tdx",   "<cmd>luafile " .. config .. "/misc/extmark-sniffer/extmark-sniffer.lua<CR>", desc = "get all extmarks" },
 
         ---------------------------------------------------------------
         -- View
@@ -101,7 +102,6 @@ return {
         -- Unused
         ---------------------------------------------------------------
         { "<leader>w",     group = "Window" },
-        { "<leader>g",     group = "Git" },
         { "<leader>s",     group = "Splits" },
 
         ---------------------------------------------------------------
