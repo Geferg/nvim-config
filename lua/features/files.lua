@@ -26,11 +26,12 @@ function M.explore_parent()
 end
 
 --- Toggle focus between last file and neo-tree buffer.
+--NOTE: This stops all autocommands from firing on neotree focus via this function!!!!!
 function M.toggle_focus()
     local ft = vim.bo.filetype
-    local last = vim.g.last_file_bufnr
-    if ft == "neo-tree" and last and vim.api.nvim_buf_is_valid(last) then
-        vim.api.nvim_set_current_buf(last)
+
+    if ft == "neo-tree" then
+        vim.cmd("noautocmd wincmd p")
     else
         vim.cmd("Neotree focus")
     end

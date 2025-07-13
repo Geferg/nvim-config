@@ -146,20 +146,38 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --     end,
 --     desc = 'Disable focus autoresize for FileType',
 -- })
+
+local ignore_buftypes = { nofile = true, prompt = true, popup = true }
+local ignore_filetypes = { ['neo-tree'] = true }
+local function is_special_buff(bufnr)
+    bufnr = bufnr or vim.api.nvim_get_current_buf()
+    local b = vim.bo[bufnr]
+    return ignore_buftypes[b.buftype] or ignore_filetypes[b.filetype]
+end
+
+-- Adjust signcolumn width based on LSP & Git
+local misc = require("features.misc")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        if not is_special_buff(args.buf) then
+            misc.update_signcolumn(args.buf, args.win)
         end
     end,
-    desc = 'Disable focus autoresize for BufType',
 })
 
-local ignore_filetypes = { 'neo-tree' }
-vim.api.nvim_create_autocmd('FileType', {
-    group = augroup,
-    callback = function(_)
-        if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-            vim.b.focus_disable = true
-        else
-            vim.b.focus_disable = false
+vim.api.nvim_create_autocmd("LspDetach", {
+    callback = function(args)
+        if not is_special_buff(args.buf) then
+            misc.update_signcolumn(args.buf, args.win)
         end
     end,
-    desc = 'Disable focus autoresize for FileType',
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "VimResized" }, {
+    callback = function(args)
+        if not is_special_buff(args.buf) then
+            misc.update_signcolumn(args.buf, args.win)
+        end
+    end,
 })
