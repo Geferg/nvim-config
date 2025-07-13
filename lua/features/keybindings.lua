@@ -27,6 +27,18 @@ return {
         { "<leader>pgrcs", function() project.generate_project("ratatui") end,                           desc = "Simple template" },
 
         ---------------------------------------------------------------
+        -- Git
+        ---------------------------------------------------------------
+        { "<leader>g",     group = "Git" },
+        -- { "<leader>gd",    "<cmd><cr>",                                                                  desc = "Show git diff" },
+        -- { "<leader>gs",    "<cmd><cr>",                                                                  desc = "Show git status" },
+        { "<leader>gg",    "<cmd>Neogit<cr>",                                                            desc = "neogit core menu" },
+        { "<leader>gw",    "<cmd>Gitsigns toggle_word_diff<cr>",                                         desc = "Toggle word diff" },
+        { "<leader>gh",    "<cmd>Gitsigns stage_hunk<cr>",                                               desc = "Toggle hunk staging" },
+        { "<leader>gp",    "<cmd>Gitsigns preview_hunk_inline<cr>",                                      desc = "" },
+        { "<leader>gb",    "<cmd>Gitsigns blame_line<cr>",                                               desc = "Show blame" },
+
+        ---------------------------------------------------------------
         -- Diagnostics (Trouble)
         ---------------------------------------------------------------
         { "<leader>d",     group = "Diagnostics" },
