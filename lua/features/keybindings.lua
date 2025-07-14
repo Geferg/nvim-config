@@ -108,6 +108,7 @@ return {
         { "<leader>v",     group = "View" },
         { "<leader>vt",    "<cmd>Twilight<CR>",                                                          desc = "Toggle twilight view" },
         { "<leader>vc",    "<cmd>Themery<CR>",                                                           desc = "Select colorscheme" },
+        { "<leader>vz",    "<cmd>ZenMode<CR>",                                                           desc = "Select colorscheme" },
 
         ---------------------------------------------------------------
         -- FunBox
