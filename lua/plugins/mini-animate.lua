@@ -11,7 +11,7 @@ return {
                 },
                 scroll = {
                     enable = true,
-                    timing = require("mini.animate").gen_timing.linear({ duration = 150, unit = "total" }),
+                    timing = require("mini.animate").gen_timing.linear({ duration = 70, unit = "total" }),
                 },
                 resize = {
                     enable = true,
