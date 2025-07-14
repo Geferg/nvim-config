@@ -152,4 +152,16 @@ function M.set_neotree_root_from_cursor()
     return M.set_root_from_cursor()
 end
 
+M.format_on_save = true
+
+function M.toggle_format_on_save()
+    M.format_on_save = not M.format_on_save
+
+    if M.format_on_save then
+        print("format on save enabled")
+    else
+        print("format on save disabled")
+    end
+end
+
 return M

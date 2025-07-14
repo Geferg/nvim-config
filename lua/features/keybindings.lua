@@ -79,6 +79,7 @@ return {
         { "<leader>tu",    "<cmd>UndotreeToggle<cr>",                                                    desc = "toggle undotree" },
         { "<leader>tc",    "<cmd>VimCoach<cr>",                                                          desc = "Vim cheat-sheet" },
         { "<leader>tj",    "<cmd>JsonGraphView<cr>",                                                     desc = "JSON visualizer" },
+        { "<leader>tf",    files.toggle_format_on_save,                                                  desc = "toggle formatting on save" },
 
         { "<leader>tr",    group = "Remaps" },
         { "<leader>trd",   remap.disable,                                                                desc = "disable remaps at startup" },
