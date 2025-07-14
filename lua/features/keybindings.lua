@@ -33,11 +33,13 @@ return {
         { "<leader>g",     group = "Git" },
         -- { "<leader>gd",    "<cmd><cr>",                                                                  desc = "Show git diff" },
         -- { "<leader>gs",    "<cmd><cr>",                                                                  desc = "Show git status" },
-        { "<leader>gg",    "<cmd>Neogit<cr>",                                                            desc = "neogit core menu" },
+        { "<leader>gg",    project.neogit_smart_target,                                                  desc = "neogit core menu" },
         { "<leader>gw",    "<cmd>Gitsigns toggle_word_diff<cr>",                                         desc = "Toggle word diff" },
         { "<leader>gh",    "<cmd>Gitsigns stage_hunk<cr>",                                               desc = "Toggle hunk staging" },
-        { "<leader>gp",    "<cmd>Gitsigns preview_hunk_inline<cr>",                                      desc = "" },
+        { "<leader>gv",    "<cmd>Gitsigns preview_hunk_inline<cr>",                                      desc = "View hunk" },
         { "<leader>gb",    "<cmd>Gitsigns blame_line<cr>",                                               desc = "Show blame" },
+        { "<leader>gn",    "<cmd>Gitsigns nav_hunk next<cr>",                                            desc = "Show next hunk" },
+        { "<leader>gp",    "<cmd>Gitsigns nav_hunk prev<cr>",                                            desc = "Show previous hunk" },
 
         ---------------------------------------------------------------
         -- Diagnostics (Trouble)

@@ -65,6 +65,21 @@ local function run_in_term(cmd, cwd)
     end
 end
 
+function M.neogit_smart_target()
+    local root = M.get_project_dir()
+    local cmd
+
+    if root and vim.fn.isdirectory(root) == 1 then
+        -- Use Neogit with the project directory as the git repo
+        cmd = string.format("Neogit cwd=%s", vim.fn.fnameescape(root))
+    else
+        -- Fallback to Neogit on the current working directory
+        cmd = "Neogit"
+    end
+
+    vim.cmd(cmd)
+end
+
 function M.build_project()
     local root = M.get_project_dir()
     if not root then
