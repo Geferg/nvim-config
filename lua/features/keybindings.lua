@@ -5,6 +5,7 @@ local remap = require("features.remap")
 local host = require("features.host")
 local harpoon = require("harpoon")
 local config = vim.fn.stdpath("config")
+local search = require("features.search")
 
 return {
     {
@@ -59,6 +60,15 @@ return {
         { "<leader>fs",    files.set_cwd_from_cursor,                                                    desc = "set cwd from file or tree" },
         { "<leader>fw",    files.echo_cwd,                                                               desc = "show working directory" },
         { "<leader>ft",    "<cmd>Neotree toggle<cr>",                                                    desc = "toggle sidebar tree" },
+
+        ---------------------------------------------------------------
+        -- Search
+        ---------------------------------------------------------------
+        { "<leader>s",     group = "Search" },
+        { "<leader>sf",    search.telescope_search_file,                                                 desc = "Search inside file" },
+        { "<leader>sw",    search.telescope_search_cwd,                                                  desc = "Search in cwd" },
+        { "<leader>ss",    search.telescope_search_system,                                               desc = "Search system" },
+        { "<leader>sp",    search.telescope_search_project,                                              desc = "Search in project" },
 
         ---------------------------------------------------------------
         -- Harpoon
