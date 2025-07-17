@@ -8,6 +8,7 @@ return {
             "hrsh7th/cmp-path",
         },
 
+        -- WARNING: Uses bad lazy spec
         config = function()
             local cmp = require("cmp")
 

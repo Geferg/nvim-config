@@ -3,6 +3,7 @@ return {
         "echasnovski/mini.animate",
         version = "*",
         event = "VeryLazy",
+        -- WARNING: Uses bad lazy spec
         config = function()
             require("mini.animate").setup({
                 cursor = {

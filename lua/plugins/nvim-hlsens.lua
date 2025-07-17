@@ -2,6 +2,7 @@ return {
     {
         "kevinhwang91/nvim-hlslens",
         event = "VeryLazy",
+        -- WARNING: Uses bad lazy spec
         config = function()
             require("hlslens").setup({
                 calm_down = true,

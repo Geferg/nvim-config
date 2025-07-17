@@ -2,6 +2,7 @@ return {
     {
         "petertriho/nvim-scrollbar",
         event = "VeryLazy",
+        -- WARNING: Uses bad lazy spec
         config = function()
             require("scrollbar").setup({
                 show = true,

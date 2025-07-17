@@ -3,6 +3,7 @@ return {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
+        -- WARNING: Uses bad lazy spec
         config = function()
             require("harpoon"):setup({
                 settings = {

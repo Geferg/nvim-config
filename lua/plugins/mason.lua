@@ -5,6 +5,7 @@ return {
         build = ":MasonUpdate",
         event = "VeryLazy",
 
+        -- WARNING: Uses bad lazy spec
         config = function()
             require("mason").setup()
 

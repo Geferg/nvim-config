@@ -2,6 +2,7 @@ return {
     {
         "zaldih/themery.nvim",
         lazy = false,
+        -- WARNING: Uses bad lazy spec
         config = function()
             local files = require("features.files")
             local themes_dir = files.this_dir(1) .. "themes/"

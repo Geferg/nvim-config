@@ -13,6 +13,7 @@ return {
                 filetypes = {},
             },
         },
+        -- WARNING: Uses bad lazy spec
         config = function()
             local wk = require("which-key")
             local keybindings = require("features.keybindings")

@@ -1,6 +1,7 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
+        -- WARNING: Uses bad lazy spec
         config = function()
             local misc = require("features.misc")
             require("gitsigns").setup {
