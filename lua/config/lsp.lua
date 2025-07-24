@@ -1,74 +1,42 @@
-local mason_path = vim.fn.stdpath("data") .. "/mason/bin/"
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local lspconfig = require("lspconfig")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 
+mason.setup()
+
+mason_lspconfig.setup({
+    ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "pyright",
+        "cmake",
+        "bashls",
+        "clangd",
+        "ts_ls",
+        "html",
+        "cssls",
+        "jsonls",
+        "eslint",
+        "tailwindcss",
+    },
+    automatic_enable = true,
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 if ok then
     capabilities = cmp_lsp.default_capabilities(capabilities)
 end
 
--- Lua
-vim.lsp.config.lua_ls = {
-    cmd = { mason_path .. "lua-language-server" },
-    filetypes = { 'lua' },
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    },
-    capabilities = capabilities,
-}
-
--- Rust
-vim.lsp.config.rust_analyzer = {
-    cmd = { mason_path .. "rust-analyzer" },
-    filetypes = { "rust" },
-    capabilities = capabilities,
-}
-
--- Python
-vim.lsp.config.pyright = {
-    cmd = { mason_path .. "pyright-langserver", "--stdio" },
-    filetypes = { "python" },
-    capabilities = capabilities,
-}
-
--- JSON
-vim.lsp.config.jsonls = {
-    cmd = { mason_path .. "vscode-json-language-server", "--stdio" },
-    filetypes = { "json", "jsonc" },
-    capabilities = capabilities,
-}
-
--- CMake
-vim.lsp.config.cmake = {
-    cmd = { mason_path .. "cmake-language-server" },
-    filetypes = { "cmake" },
-    capabilities = capabilities,
-}
-
--- Bash
-vim.lsp.config.bashls = {
-    cmd = { mason_path .. "bash-language-server", "start" },
-    filetypes = { "sh" },
-    capabilities = capabilities,
-}
-
--- C/C++
-vim.lsp.config.clangd = {
-    cmd = { mason_path .. "clangd" },
-    filetypes = { "c", "cpp", "objc", "objcpp" },
-    capabilities = capabilities,
-}
-
--- Enable all servers
-vim.lsp.enable({
-    "lua_ls",
-    "rust_analyzer",
-    "pyright",
-    "jsonls",
-    "cmake",
-    "bashls",
-    "clangd",
-})
+lspconfig.bashls.setup({ capabilities = capabilities })
+lspconfig.clangd.setup({ capabilities = capabilities })
+lspconfig.cmake.setup({ capabilities = capabilities })
+lspconfig.cssls.setup({ capabilities = capabilities })
+lspconfig.eslint.setup({ capabilities = capabilities })
+lspconfig.html.setup({ capabilities = capabilities })
+lspconfig.jsonls.setup({ capabilities = capabilities })
+lspconfig.lua_ls.setup({ capabilities = capabilities })
+lspconfig.pyright.setup({ capabilities = capabilities })
+lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+lspconfig.tailwindcss.setup({ capabilities = capabilities })
+lspconfig.ts_ls.setup({ capabilities = capabilities })
