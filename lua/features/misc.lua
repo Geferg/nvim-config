@@ -33,7 +33,7 @@ function M.update_signcolumn(bufnr, winnr)
     local cols = 0
 
     -- 1) any LSP clients attached?
-    if next(vim.lsp.get_active_clients({ bufnr = bufnr })) then
+    if next(vim.lsp.get_clients({ bufnr = bufnr })) then
         cols = cols + 1
     end
 
@@ -43,24 +43,6 @@ function M.update_signcolumn(bufnr, winnr)
     end
 
     -- set signcolumn: "no" when zero, or "yes:<n>" otherwise
-    local val = (cols == 0 and "no") or ("yes:" .. cols)
-    vim.api.nvim_win_set_option(winnr, "signcolumn", val)
-end
-
-function M.update_signcolumn_old(bufnr, winnr)
-    bufnr = bufnr or vim.api.nvim_get_current_buf()
-    winnr = winnr or vim.api.nvim_get_current_win()
-
-    local cols = 0
-    -- 1) any LSP clients?
-    if next(vim.lsp.get_active_clients({ bufnr = bufnr })) then
-        cols = cols + 1
-    end
-    -- 2) gitsigns attached?
-    if vim.b[bufnr].gitsigns_attached then
-        cols = cols + 1
-    end
-
     local val = (cols == 0 and "no") or ("yes:" .. cols)
     vim.api.nvim_win_set_option(winnr, "signcolumn", val)
 end
