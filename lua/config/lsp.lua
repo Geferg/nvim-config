@@ -1,10 +1,5 @@
-local lspconfig = require("lspconfig")
-local mason = require("mason")
-local mason_lspconfig = require("mason-lspconfig")
-
-mason.setup()
-
-mason_lspconfig.setup({
+require("mason").setup()
+require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
         "rust_analyzer",
@@ -12,31 +7,43 @@ mason_lspconfig.setup({
         "cmake",
         "bashls",
         "clangd",
-        "ts_ls",
         "html",
         "cssls",
         "jsonls",
         "eslint",
         "tailwindcss",
+        "ts_ls",
     },
-    automatic_enable = true,
+    automatic_enable = true, -- default, but explicit never hurts
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+local caps = vim.lsp.protocol.make_client_capabilities()
+local ok, cmp = pcall(require, "cmp_nvim_lsp")
 if ok then
-    capabilities = cmp_lsp.default_capabilities(capabilities)
+    caps = cmp.default_capabilities(caps)
 end
 
-lspconfig.bashls.setup({ capabilities = capabilities })
-lspconfig.clangd.setup({ capabilities = capabilities })
-lspconfig.cmake.setup({ capabilities = capabilities })
-lspconfig.cssls.setup({ capabilities = capabilities })
-lspconfig.eslint.setup({ capabilities = capabilities })
-lspconfig.html.setup({ capabilities = capabilities })
-lspconfig.jsonls.setup({ capabilities = capabilities })
-lspconfig.lua_ls.setup({ capabilities = capabilities })
-lspconfig.pyright.setup({ capabilities = capabilities })
-lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-lspconfig.tailwindcss.setup({ capabilities = capabilities })
-lspconfig.ts_ls.setup({ capabilities = capabilities })
+local function on_attach(_, bufnr)
+    -- example keymap
+    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+end
+
+vim.lsp.config("*", {
+    capabilities = caps,
+    on_attach    = on_attach,
+})
+
+vim.lsp.enable({
+    "lua_ls",
+    "rust_analyzer",
+    "pyright",
+    "cmake",
+    "bashls",
+    "clangd",
+    "html",
+    "cssls",
+    "jsonls",
+    "eslint",
+    "tailwindcss",
+    "ts_ls",
+})
