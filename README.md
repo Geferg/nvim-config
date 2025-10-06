@@ -102,7 +102,7 @@ source ~/.cargo/env
 ```bash
 mkdir -p ~/.local/bin
 cd ~/.local/bin
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
 chmod u+x nvim-linux-x86_64.appimage
 [ -f nvim ] && mv nvim nvim.bak
 mv nvim-linux-x86_64.appimage nvim
