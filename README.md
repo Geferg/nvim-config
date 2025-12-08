@@ -70,6 +70,100 @@ If you are unsure how to create this file, do:
 3. save with ctrl + o and press enter
 4. close with ctrl + x
 
+For Linux systems I am using this (zsh!):
+```lua
+local wezterm = require 'wezterm'
+local mux = wezterm.mux
+local config = wezterm.config_builder()
+
+config.color_scheme = "OneHalfDark"
+config.font = wezterm.font_with_fallback({
+    "CaskaydiaCove Nerd Font",
+    "FiraCode Nerd Font",
+    "Symbols Nerd Font Mono",
+})
+
+config.font_size = 14.0
+config.line_height = 1.1
+config.cell_width = 1.0
+
+--config.window_decorations = 'RESIZE'
+config.window_background_opacity = 1.0
+config.hide_tab_bar_if_only_one_tab = true
+config.window_padding = {
+    left = 4,
+    right = 4,
+    top = 2,
+    bottom = 2,
+}
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    return {
+        { Text = " " .. tab.active_pane.title .. " " },
+    }
+end)
+
+wezterm.on("gui-startup", function(cmd)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
+end)
+
+config.scrollback_lines = 5000
+config.default_cursor_style = 'BlinkingBar'
+config.animation_fps = 60
+config.max_fps = 60
+config.audible_bell = "Disabled"
+
+config.default_prog = { "/usr/bin/zsh", "-l" }
+
+config.keys = {
+    {
+        key = "w",
+        mods = "CTRL",
+        action = wezterm.action.CloseCurrentTab { confirm = false },
+    },
+    {
+        key = "t",
+        mods = "CTRL",
+        action = wezterm.action.SpawnTab "DefaultDomain",
+    },
+    { key = "1", mods = "CTRL", action = wezterm.action.ActivateTab(0) },
+    { key = "2", mods = "CTRL", action = wezterm.action.ActivateTab(1) },
+    { key = "3", mods = "CTRL", action = wezterm.action.ActivateTab(2) },
+    { key = "4", mods = "CTRL", action = wezterm.action.ActivateTab(3) },
+    { key = "5", mods = "CTRL", action = wezterm.action.ActivateTab(4) },
+    { key = "6", mods = "CTRL", action = wezterm.action.ActivateTab(5) },
+    { key = "7", mods = "CTRL", action = wezterm.action.ActivateTab(6) },
+    { key = "8", mods = "CTRL", action = wezterm.action.ActivateTab(7) },
+    { key = "9", mods = "CTRL", action = wezterm.action.ActivateTab(8) },
+}
+
+wezterm.on('user-var-changed', function(window, pane, name, value)
+    local overrides = window:get_config_overrides() or {}
+    if name == "ZEN_MODE" then
+        local incremental = value:find("+")
+        local number_value = tonumber(value)
+        if incremental ~= nil then
+            while (number_value > 0) do
+                window:perform_action(wezterm.action.IncreaseFontSize, pane)
+                number_value = number_value - 1
+            end
+            overrides.enable_tab_bar = false
+        elseif number_value < 0 then
+            window:perform_action(wezterm.action.ResetFontSize, pane)
+            overrides.font_size = nil
+            overrides.enable_tab_bar = true
+        else
+            overrides.font_size = number_value
+            overrides.enable_tab_bar = false
+        end
+    end
+    window:set_config_overrides(overrides)
+end)
+
+return config
+```
+
 ## 4. WSL Base System + Tools
 Launch WezTerm (using WSL) and run:
 
