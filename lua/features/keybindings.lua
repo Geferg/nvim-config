@@ -130,6 +130,8 @@ return {
         ---------------------------------------------------------------
         { "-",             misc.conditional_dash,                                                        desc = "go up directory" },
         {"<A-k>",          ":m .-2<CR>==",                                                               desc = "Move line up"},
-        {"<A-j>",          ":m .+1<CR>==",                                                               desc = "Move line up"},
+        {"<A-j>",          ":m .+1<CR>==",                                                               desc = "Move line down"},
+        {"<A-h>",          "<<",                                                                         desc = "Move line left"},
+        {"<A-l>",          ">>",                                                                         desc = "Move line right"},
     }
 }
